@@ -12,6 +12,72 @@ menu.dbg=Debug symbols and core logs
 menu.rtlib=C Runtime Library
 menu.upload_method=Upload method
 
+
+
+################################################################################
+# Gonk 64 boards
+
+
+
+
+
+Gonk_64.name=Gonk-64
+Gonk_64.build.core=arduino
+Gonk_64.build.board=Gonk_64
+Gonk_64.build.st_extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial}
+Gonk_64.build.mcu=cortex-m7
+Gonk_64.build.fpu=-mfpu=fpv4-sp-d16
+Gonk_64.build.float-abi=-mfloat-abi=hard
+Gonk_64.build.series=STM32F7xx
+Gonk_64.build.cmsis_lib_gcc=arm_cortexM7lfsp_math
+Gonk_64.build.flash_offset=0x0
+Gonk_64.upload.maximum_size=0
+Gonk_64.upload.maximum_data_size=0
+
+
+
+Gonk_64.menu.pnum.GONK_F730R8TX=Gonk F730R8T
+Gonk_64.menu.pnum.GONK_F730R8TX.upload.maximum_size=65536
+Gonk_64.menu.pnum.GONK_F730R8TX.upload.maximum_data_size=262144
+Gonk_64.menu.pnum.GONK_F730R8TX.build.board=GONK_F730R8T
+Gonk_64.menu.pnum.GONK_F730R8TX.build.product_line=STM32F730xx
+Gonk_64.menu.pnum.GONK_F730R8TX.build.variant=STM32F7xx/F722R(C-E)T_F730R8T_F732RET
+
+
+# Gonk F730R8T
+#Gonk_64.menu.pnum.GONK_F730R8TX=GONK_F730R8TX
+#Gonk_64.menu.pnum.GONK_F730R8TX.upload.maximum_size=65536
+#Gonk_64.menu.pnum.GONK_F730R8TX.upload.maximum_data_size=262144
+#Gonk_64.menu.pnum.GONK_F730R8TX.build.mcu=cortex-m7
+#Gonk_64.menu.pnum.GONK_F730R8TX.build.fpu=-mfpu=fpv4-sp-d16
+#Gonk_64.menu.pnum.GONK_F730R8TX.build.float-abi=-mfloat-abi=hard
+#Gonk_64.menu.pnum.GONK_F730R8TX.build.board=GONK_F730R8T
+#Gonk_64.menu.pnum.GONK_F730R8TX.build.series=STM32F7xx
+#Gonk_64.menu.pnum.GONK_F730R8TX.build.product_line=STM32F730xx
+#Gonk_64.menu.pnum.GONK_F730R8TX.build.variant=STM32F7xx/F722R(C-E)T_F730R8T_F732RET
+#Gonk_64.menu.pnum.GONK_F730R8TX.build.variant_h=variant_GONK_F730R8T.h
+#Gonk_64.menu.pnum.GONK_F730R8TX.build.cmsis_lib_gcc=arm_cortexM7lfsp_math
+
+
+# Upload menu
+
+Gonk_64.menu.upload_method.swdMethod=STM32CubeProgrammer (SWD)
+Gonk_64.menu.upload_method.swdMethod.upload.protocol=0
+Gonk_64.menu.upload_method.swdMethod.upload.options=
+Gonk_64.menu.upload_method.swdMethod.upload.tool=stm32CubeProg
+
+#Gonk_64.menu.upload_method.serialMethod=STM32CubeProgrammer (Serial)
+#Gonk_64.menu.upload_method.serialMethod.upload.protocol=1
+#Gonk_64.menu.upload_method.serialMethod.upload.options={serial.port.file}
+#Gonk_64.menu.upload_method.serialMethod.upload.tool=stm32CubeProg
+
+Gonk_64.menu.upload_method.dfuMethod=STM32CubeProgrammer (DFU)
+Gonk_64.menu.upload_method.dfuMethod.upload.protocol=2
+Gonk_64.menu.upload_method.dfuMethod.upload.options=
+Gonk_64.menu.upload_method.dfuMethod.upload.tool=stm32CubeProg
+
+
+
 ################################################################################
 # Nucleo 144 boards
 
@@ -11001,6 +11067,12 @@ SparkFun.menu.upload_method.dfuMethod.upload.tool=stm32CubeProg
 
 ################################################################################
 # Serialx activation
+Gonk_64.menu.xserial.generic=Enabled (generic 'Serial')
+Gonk_64.menu.xserial.none=Enabled (no generic 'Serial')
+Gonk_64.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
+Gonk_64.menu.xserial.disabled=Disabled (No Serial support)
+Gonk_64.menu.xserial.disabled.build.xSerial=
+
 Nucleo_144.menu.xserial.generic=Enabled (generic 'Serial')
 Nucleo_144.menu.xserial.none=Enabled (no generic 'Serial')
 Nucleo_144.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
@@ -11208,6 +11280,19 @@ SparkFun.menu.xserial.disabled=Disabled (no Serial support)
 SparkFun.menu.xserial.disabled.build.xSerial=
 
 # USB connectivity
+Gonk_64.menu.usb.none=None
+Gonk_64.menu.usb.CDCgen=CDC (generic 'Serial' supersede U(S)ART)
+Gonk_64.menu.usb.CDCgen.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC
+Gonk_64.menu.usb.CDC=CDC (no generic 'Serial')
+Gonk_64.menu.usb.CDC.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC -DDISABLE_GENERIC_SERIALUSB
+Gonk_64.menu.usb.HID=HID (keyboard and mouse)
+Gonk_64.menu.usb.HID.build.enable_usb={build.usb_flags} -DUSBD_USE_HID_COMPOSITE
+Gonk_64.menu.xusb.FS=Low/Full Speed
+Gonk_64.menu.xusb.HS=High Speed
+Gonk_64.menu.xusb.HS.build.usb_speed=-DUSE_USB_HS
+Gonk_64.menu.xusb.HSFS=High Speed in Full Speed mode
+Gonk_64.menu.xusb.HSFS.build.usb_speed=-DUSE_USB_HS -DUSE_USB_HS_IN_FS
+
 Nucleo_144.menu.usb.none=None
 Nucleo_144.menu.usb.CDCgen=CDC (generic 'Serial' supersede U(S)ART)
 Nucleo_144.menu.usb.CDCgen.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC
@@ -11557,6 +11642,26 @@ SparkFun.menu.xusb.HSFS=High Speed in Full Speed mode
 SparkFun.menu.xusb.HSFS.build.usb_speed=-DUSE_USB_HS -DUSE_USB_HS_IN_FS
 
 # Optimizations
+Gonk_64.menu.opt.osstd=Smallest (-Os default)
+Gonk_64.menu.opt.oslto=Smallest (-Os) with LTO
+Gonk_64.menu.opt.oslto.build.flags.optimize=-Os -flto
+Gonk_64.menu.opt.o1std=Fast (-O1)
+Gonk_64.menu.opt.o1std.build.flags.optimize=-O1
+Gonk_64.menu.opt.o1lto=Fast (-O1) with LTO
+Gonk_64.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+Gonk_64.menu.opt.o2std=Faster (-O2)
+Gonk_64.menu.opt.o2std.build.flags.optimize=-O2
+Gonk_64.menu.opt.o2lto=Faster (-O2) with LTO
+Gonk_64.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+Gonk_64.menu.opt.o3std=Fastest (-O3)
+Gonk_64.menu.opt.o3std.build.flags.optimize=-O3
+Gonk_64.menu.opt.o3lto=Fastest (-O3) with LTO
+Gonk_64.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+Gonk_64.menu.opt.ogstd=Debug (-Og)
+Gonk_64.menu.opt.ogstd.build.flags.optimize=-Og
+Gonk_64.menu.opt.o0std=No Optimization (-O0)
+Gonk_64.menu.opt.o0std.build.flags.optimize=-O0
+
 Nucleo_144.menu.opt.osstd=Smallest (-Os default)
 Nucleo_144.menu.opt.oslto=Smallest (-Os) with LTO
 Nucleo_144.menu.opt.oslto.build.flags.optimize=-Os -flto
@@ -12218,6 +12323,15 @@ SparkFun.menu.opt.o0std=No Optimization (-O0)
 SparkFun.menu.opt.o0std.build.flags.optimize=-O0
 
 # Debug information
+
+Gonk_64.menu.dbg.none=None
+Gonk_64.menu.dbg.enable_sym=Symbols Enabled (-g)
+Gonk_64.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
+Gonk_64.menu.dbg.enable_log=Core logs Enabled
+Gonk_64.menu.dbg.enable_log.build.flags.debug=
+Gonk_64.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
+Gonk_64.menu.dbg.enable_all.build.flags.debug=-g
+
 Nucleo_144.menu.dbg.none=None
 Nucleo_144.menu.dbg.enable_sym=Symbols Enabled (-g)
 Nucleo_144.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
@@ -12471,6 +12585,17 @@ SparkFun.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
 SparkFun.menu.dbg.enable_all.build.flags.debug=-g
 
 # C Runtime Library
+
+Gonk_64.menu.rtlib.nano=Newlib Nano (default)
+Gonk_64.menu.rtlib.nanofp=Newlib Nano + Float Printf
+Gonk_64.menu.rtlib.nanofp.build.flags.ldspecs=--specs=nano.specs -u _printf_float
+Gonk_64.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+Gonk_64.menu.rtlib.nanofs.build.flags.ldspecs=--specs=nano.specs -u _scanf_float
+Gonk_64.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+Gonk_64.menu.rtlib.nanofps.build.flags.ldspecs=--specs=nano.specs -u _printf_float -u _scanf_float
+Gonk_64.menu.rtlib.full=Newlib Standard
+Gonk_64.menu.rtlib.full.build.flags.ldspecs=
+
 Nucleo_144.menu.rtlib.nano=Newlib Nano (default)
 Nucleo_144.menu.rtlib.nanofp=Newlib Nano + Float Printf
 Nucleo_144.menu.rtlib.nanofp.build.flags.ldspecs=--specs=nano.specs -u _printf_float
@@ -12800,3 +12925,8 @@ SparkFun.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
 SparkFun.menu.rtlib.nanofps.build.flags.ldspecs=--specs=nano.specs -u _printf_float -u _scanf_float
 SparkFun.menu.rtlib.full=Newlib Standard
 SparkFun.menu.rtlib.full.build.flags.ldspecs=
+
+
+
+
+

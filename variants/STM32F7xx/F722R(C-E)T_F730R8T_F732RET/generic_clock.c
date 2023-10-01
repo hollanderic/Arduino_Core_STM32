@@ -11,7 +11,8 @@
  *******************************************************************************
  */
 #if defined(ARDUINO_GENERIC_F722RCTX) || defined(ARDUINO_GENERIC_F722RETX) ||\
-    defined(ARDUINO_GENERIC_F730R8TX) || defined(ARDUINO_GENERIC_F732RETX)
+    defined(ARDUINO_GENERIC_F730R8TX) || defined(ARDUINO_GENERIC_F732RETX) ||\
+    defined(ARDUINO_GONK_F730R8T)
 #include "pins_arduino.h"
 
 /**

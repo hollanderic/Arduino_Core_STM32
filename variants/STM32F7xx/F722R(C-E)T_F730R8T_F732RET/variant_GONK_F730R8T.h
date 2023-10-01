@@ -166,17 +166,23 @@
 
 // UART Definitions
 #ifndef SERIAL_UART_INSTANCE
-  #define SERIAL_UART_INSTANCE  4
+  #define SERIAL_UART_INSTANCE  2
 #endif
 
 // Default pin used for generic 'Serial' instance
 // Mandatory for Firmata
 #ifndef PIN_SERIAL_RX
-  #define PIN_SERIAL_RX         PA0
+  #define PIN_SERIAL_RX         PA3
 #endif
 #ifndef PIN_SERIAL_TX
-  #define PIN_SERIAL_TX         PA1
+  #define PIN_SERIAL_TX         PA2
 #endif
+
+// SDMMC signals not available
+#define SDMMC_CKIN_NA
+#define SDMMC_CDIR_NA
+#define SDMMC_D0DIR_NA
+#define SDMMC_D123DIR_NA
 
 // Extra HAL modules
 #if !defined(HAL_DAC_MODULE_DISABLED)
